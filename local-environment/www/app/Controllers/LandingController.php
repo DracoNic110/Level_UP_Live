@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Controllers;
+
+class LandingController extends BaseController
+{
+    public function index()
+    {
+        return view('landing/index', [
+            'pageTitle' => 'Discover | Level Up Live'
+        ]);
+    }
+}
