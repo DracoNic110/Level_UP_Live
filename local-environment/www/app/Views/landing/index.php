@@ -3,49 +3,7 @@
 
 <?= $this->section('content') ?>
 
-<div class="levelup-main">
-
-    <!-- Following sidebar -->
-    <aside class="levelup-sidebar" id="following">
-
-        <div class="levelup-sidebar-heading">
-            <h2>Following</h2>
-            <a href="#">View all</a>
-        </div>
-
-        <?php
-        $creators = [
-            ['name' => 'Ninja', 'game' => 'Fortnite', 'status' => 'LIVE', 'initial' => 'N'],
-            ['name' => 'Shroud', 'game' => 'Counter-Strike 2', 'status' => 'LIVE', 'initial' => 'S'],
-            ['name' => 'Ibai', 'game' => 'Just Chatting', 'status' => 'LIVE', 'initial' => 'I'],
-            ['name' => 'Pokimane', 'game' => 'Valorant', 'status' => 'OFF', 'initial' => 'P'],
-            ['name' => 'Rubius', 'game' => 'Minecraft', 'status' => 'OFF', 'initial' => 'R'],
-        ];
-        ?>
-
-        <?php foreach ($creators as $creator): ?>
-            <div class="levelup-creator">
-                <span class="levelup-avatar">
-                    <?= esc($creator['initial']) ?>
-                </span>
-
-                <div class="levelup-creator-info">
-                    <strong><?= esc($creator['name']) ?></strong>
-                    <small><?= esc($creator['game']) ?></small>
-                </div>
-
-                <?php if ($creator['status'] === 'LIVE'): ?>
-                    <span class="levelup-live-badge">LIVE</span>
-                <?php else: ?>
-                    <span class="levelup-vod-badge">OFF</span>
-                <?php endif; ?>
-            </div>
-        <?php endforeach; ?>
-
-    </aside>
-
-    <!-- Main content -->
-    <div class="levelup-content">
+<div class="levelup-content">
 
         <!-- Live Now -->
         <section class="levelup-section">
@@ -177,8 +135,6 @@
             </div>
 
         </section>
-
-    </div>
 
 </div>
 

@@ -3,96 +3,102 @@
 
 <?= $this->section('content') ?>
 
-<div class="levelup-main">
+<div class="levelup-streams-page">
 
-    <aside class="levelup-sidebar">
-        <div class="levelup-sidebar-heading">
-            <h2>Live categories</h2>
-        </div>
+    <main class="levelup-content">
 
-        <div class="levelup-creator">
-            <span class="levelup-avatar">F</span>
-            <div class="levelup-creator-info">
-                <strong>Fortnite</strong>
-                <small>Battle Royale</small>
+        <div class="levelup-section-header">
+            <div>
+                <h1>
+                    <?= empty($selectedCategory)
+                        ? 'Live Streams'
+                        : esc($selectedCategory) ?>
+                </h1>
+
+                <p>
+                    <?= count($streams) ?> emissions
+                    <?php if (!empty($selectedCategory)): ?>
+                        in this category
+                    <?php else: ?>
+                        currently listed
+                    <?php endif; ?>
+                </p>
             </div>
         </div>
 
-        <div class="levelup-creator">
-            <span class="levelup-avatar">V</span>
-            <div class="levelup-creator-info">
-                <strong>Valorant</strong>
-                <small>FPS</small>
-            </div>
-        </div>
+        <nav class="levelup-category-filters" aria-label="Filter streams by category">
+            <a href="<?= base_url('streams') ?>"
+               class="levelup-category-filter <?= empty($selectedCategory) ? 'active' : '' ?>"
+               <?= empty($selectedCategory) ? 'aria-current="page"' : '' ?>>
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+                <span>All streams</span>
+            </a>
 
-        <div class="levelup-creator">
-            <span class="levelup-avatar">C</span>
-            <div class="levelup-creator-info">
-                <strong>Counter-Strike 2</strong>
-                <small>FPS</small>
-            </div>
-        </div>
+            <?php foreach ($categories as $category): ?>
+                <a href="<?= base_url('streams') . '?category=' . rawurlencode($category) ?>"
+                   class="levelup-category-filter <?= ($selectedCategory ?? '') === $category ? 'active' : '' ?>"
+                   <?= ($selectedCategory ?? '') === $category ? 'aria-current="page"' : '' ?>>
+                    <i class="fa fa-gamepad" aria-hidden="true"></i>
+                    <span><?= esc($category) ?></span>
+                </a>
+            <?php endforeach; ?>
+        </nav>
 
-        <div class="levelup-creator">
-            <span class="levelup-avatar">J</span>
-            <div class="levelup-creator-info">
-                <strong>Just Chatting</strong>
-                <small>Community</small>
-            </div>
-        </div>
-    </aside>
+        <?php if (empty($streams)): ?>
 
-    <div class="levelup-content">
-
-        <section class="levelup-section">
-
-            <div class="levelup-section-header">
-                <div>
-                    <h2><i class="fa fa-circle" style="color:#f0444e;font-size:9px;"></i> Live Streams</h2>
-                    <p>Explore all currently active broadcasts</p>
-                </div>
+            <div class="levelup-empty-state">
+                <i class="fa fa-video-camera"></i>
+                <h2>No streams found</h2>
+                <p>There are currently no streams in this category.</p>
+                <a href="<?= base_url('streams') ?>">View all streams</a>
             </div>
 
-            <?php
-            $streams = [
-                ['id' => '1', 'title' => 'Ranked matches', 'creator' => 'Ninja', 'game' => 'Fortnite', 'viewers' => '12.4K'],
-                ['id' => '2', 'title' => 'Road to Global', 'creator' => 'Shroud', 'game' => 'Counter-Strike 2', 'viewers' => '8.2K'],
-                ['id' => '3', 'title' => 'Just Chatting', 'creator' => 'Ibai', 'game' => 'Just Chatting', 'viewers' => '24.1K'],
-                ['id' => '4', 'title' => 'Competitive gameplay', 'creator' => 'Pokimane', 'game' => 'Valorant', 'viewers' => '5.3K'],
-                ['id' => '5', 'title' => 'Survival adventure', 'creator' => 'Rubius', 'game' => 'Minecraft', 'viewers' => '9.7K'],
-            ];
-            ?>
+        <?php else: ?>
 
             <div class="levelup-card-grid">
 
                 <?php foreach ($streams as $stream): ?>
-                    <a href="<?= base_url('streams/' . $stream['id']) ?>" class="levelup-video-card">
 
-                        <div class="levelup-thumbnail">
-                            <span class="levelup-live-badge">LIVE</span>
+                    <a class="levelup-video-card"
+                       href="<?= base_url('streams/' . rawurlencode($stream['id'])) ?>">
+
+                        <div class="levelup-thumbnail"
+                             style="background: linear-gradient(135deg, <?= esc($stream['color']) ?>, #171717);">
+
+                            <div class="levelup-thumbnail-content">
+                                <i class="fa <?= esc($stream['icon']) ?>"></i>
+                                <span><?= esc($stream['category']) ?></span>
+                            </div>
+
+                            <?php if ($stream['live']): ?>
+                                <span class="levelup-live-badge">LIVE</span>
+                            <?php else: ?>
+                                <span style="position:absolute;top:10px;left:10px;background:#555;color:white;padding:4px 8px;border-radius:4px;font-size:11px;">
+                                    OFFLINE
+                                </span>
+                            <?php endif; ?>
+
                         </div>
 
                         <div class="levelup-video-info">
-                            <strong><?= esc($stream['title']) ?></strong>
-                            <small>
-                                <i class="fa fa-eye"></i>
-                                <?= esc($stream['viewers']) ?>
-                            </small>
+                            <div class="levelup-video-description">
+                                <h3><?= esc($stream['title']) ?></h3>
+                                <p><?= esc($stream['creator']) ?></p>
+                                <span><?= esc($stream['category']) ?></span>
+                            </div>
                         </div>
 
-                        <span class="levelup-video-description">
-                            <?= esc($stream['creator']) ?> · <?= esc($stream['game']) ?>
-                        </span>
-
                     </a>
+
                 <?php endforeach; ?>
 
             </div>
 
-        </section>
+        <?php endif; ?>
 
-    </div>
+    </main>
+
+</div>
 
 </div>
 

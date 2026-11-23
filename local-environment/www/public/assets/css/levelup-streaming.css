@@ -820,3 +820,629 @@ body.levelup-body {
         font-size: 23px;
     }
 }
+
+
+/* =========================================
+   LEVEL UP LIVE - Brand and responsive refinements
+   ========================================= */
+
+/* Brand assets */
+.levelup-brand {
+    min-width: 0;
+}
+
+.levelup-brand-logo {
+    display: block;
+    width: auto;
+    max-width: 190px;
+    height: 34px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.levelup-toolbar-logo {
+    display: block;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.levelup-topbar-search-icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    color: var(--lu-muted);
+}
+
+/* Current section and navigation interaction */
+.levelup-nav a {
+    white-space: nowrap;
+    transition: background-color .18s ease, color .18s ease;
+}
+
+.levelup-nav a:hover {
+    background: #e7eaf0;
+    color: var(--lu-text);
+}
+
+.levelup-nav a.active,
+.levelup-nav a.active:hover {
+    background: var(--lu-text);
+    color: #fff;
+}
+
+.levelup-nav a:focus-visible,
+.levelup-body button:focus-visible,
+.levelup-body input:focus-visible {
+    outline: 2px solid var(--lu-red);
+    outline-offset: 2px;
+}
+
+/* Prevent grid children from forcing horizontal overflow */
+.levelup-main,
+.levelup-player-page,
+.levelup-content,
+.levelup-player-center,
+.levelup-chat {
+    min-width: 0;
+}
+
+.levelup-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .levelup-toolbar {
+        gap: 12px;
+    }
+
+    .levelup-toolbar-brand {
+        min-width: 150px;
+    }
+
+    .levelup-search {
+        width: min(300px, 36%);
+    }
+
+    .levelup-main {
+        grid-template-columns: 180px minmax(0, 1fr);
+    }
+
+    .levelup-player-page {
+        grid-template-columns: 165px minmax(0, 1fr);
+    }
+
+    .levelup-player-sidebar {
+        min-width: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    .levelup-topbar {
+        height: 54px;
+        padding: 0 13px;
+    }
+
+    .levelup-brand-logo {
+        max-width: 165px;
+        height: 31px;
+    }
+
+    .levelup-nav {
+        min-height: 46px;
+        gap: 5px;
+        padding: 6px 10px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scrollbar-width: thin;
+    }
+
+    .levelup-nav a {
+        flex: 0 0 auto;
+        padding: 9px 11px;
+        font-size: 11px;
+    }
+
+    .levelup-toolbar {
+        margin: 9px 10px 10px;
+        padding: 9px;
+        gap: 9px;
+    }
+
+    .levelup-toolbar-brand {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .levelup-toolbar-brand strong {
+        font-size: 13px;
+    }
+
+    .levelup-toolbar-brand small {
+        font-size: 9px;
+    }
+
+    .levelup-toolbar-logo {
+        flex-basis: 33px;
+        width: 33px;
+        height: 33px;
+    }
+
+    .levelup-toolbar-actions {
+        gap: 5px;
+    }
+
+    .levelup-toolbar-actions .levelup-button {
+        min-width: 34px;
+        min-height: 34px;
+        padding: 0 9px;
+    }
+
+    .levelup-toolbar-actions .levelup-button-primary span {
+        display: none;
+    }
+
+    .levelup-search {
+        order: 3;
+        flex: 1 0 100%;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .levelup-main {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0 10px 12px;
+        min-height: 0;
+    }
+
+    .levelup-content {
+        order: 1;
+    }
+
+    .levelup-sidebar {
+        order: 2;
+    }
+
+    .levelup-section {
+        padding: 11px;
+    }
+
+    .levelup-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .levelup-player-page {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0 10px 12px;
+        min-height: 0;
+    }
+
+    .levelup-player-center {
+        order: 1;
+    }
+
+    .levelup-player-sidebar {
+        order: 2;
+        min-height: 0;
+    }
+
+    .levelup-chat {
+        order: 3;
+        min-height: 350px;
+    }
+
+    .levelup-stream-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .levelup-stream-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .levelup-player-screen {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+    }
+
+    .levelup-stream-details-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 420px) {
+    .levelup-brand-logo {
+        max-width: 145px;
+        height: 29px;
+    }
+
+    .levelup-toolbar-brand small {
+        display: none;
+    }
+
+    .levelup-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .levelup-section-header {
+        gap: 8px;
+    }
+
+    .levelup-player-screen {
+        border-radius: 9px;
+    }
+
+    .levelup-stream-actions .levelup-button {
+        flex: 1 1 auto;
+    }
+}
+
+
+/* =========================================
+   HEADER UNIFICADO: LOGO + BUSCADOR + ACCIONES
+   El header y el navbar son las dos únicas barras superiores.
+   ========================================= */
+
+.levelup-header {
+    background: var(--lu-surface);
+}
+
+.levelup-header .levelup-topbar {
+    min-height: 64px;
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(150px, 220px) minmax(180px, 1fr) auto;
+    align-items: center;
+    gap: 22px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--lu-border);
+}
+
+.levelup-header .levelup-brand {
+    min-width: 0;
+}
+
+.levelup-header .levelup-brand-logo {
+    max-width: 190px;
+    height: 36px;
+}
+
+.levelup-header .levelup-search {
+    width: 100%;
+    max-width: 520px;
+    justify-self: center;
+}
+
+.levelup-header .levelup-toolbar-actions {
+    justify-self: end;
+    flex-wrap: nowrap;
+}
+
+.levelup-header .levelup-nav {
+    border-bottom: 1px solid var(--lu-border);
+}
+
+/* Tablet: compactar el espacio entre los tres grupos */
+@media (max-width: 900px) {
+    .levelup-header .levelup-topbar {
+        grid-template-columns: minmax(125px, 175px) minmax(150px, 1fr) auto;
+        gap: 12px;
+        padding: 9px 14px;
+    }
+
+    .levelup-header .levelup-brand-logo {
+        max-width: 165px;
+        height: 32px;
+    }
+
+    .levelup-header .levelup-toolbar-actions {
+        gap: 5px;
+    }
+
+    .levelup-header .levelup-toolbar-actions .levelup-button {
+        padding: 0 10px;
+    }
+}
+
+/* Mobile: mantener una sola fila para el header y otra para el navbar */
+@media (max-width: 650px) {
+    .levelup-header .levelup-topbar {
+        grid-template-columns: minmax(105px, 1fr) minmax(0, 1.25fr) auto;
+        gap: 8px;
+        min-height: 58px;
+        padding: 8px 10px;
+    }
+
+    .levelup-header .levelup-brand-logo {
+        max-width: 125px;
+        height: 28px;
+    }
+
+    .levelup-header .levelup-search {
+        min-width: 0;
+        width: 100%;
+        padding: 9px 8px;
+        font-size: 11px;
+    }
+
+    .levelup-header .levelup-toolbar-actions {
+        gap: 4px;
+    }
+
+    .levelup-header .levelup-toolbar-actions .levelup-button {
+        min-width: 30px;
+        min-height: 32px;
+        padding: 0 7px;
+    }
+
+    .levelup-header .levelup-toolbar-actions .levelup-button-primary span {
+        display: none;
+    }
+
+    .levelup-header .levelup-nav {
+        min-height: 44px;
+        padding: 5px 8px;
+    }
+}
+
+/* Pantallas muy estrechas: ocultar texto del botón, no los controles */
+@media (max-width: 380px) {
+    .levelup-header .levelup-topbar {
+        grid-template-columns: minmax(80px, 1fr) minmax(0, 1.15fr) auto;
+        gap: 5px;
+        padding-inline: 7px;
+    }
+
+    .levelup-header .levelup-brand-logo {
+        max-width: 105px;
+        height: 25px;
+    }
+
+    .levelup-header .levelup-search {
+        padding-inline: 6px;
+        font-size: 10px;
+    }
+
+    .levelup-header .levelup-toolbar-actions .levelup-button {
+        min-width: 28px;
+        padding-inline: 6px;
+    }
+}
+
+
+
+/* =========================================
+   SIDEBAR GLOBAL + RESPONSIVE
+   ========================================= */
+.levelup-nav .levelup-sidebar-toggle {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    padding: 0;
+    border: 1px solid var(--lu-border);
+    border-radius: 7px;
+    background: var(--lu-surface);
+    color: var(--lu-text);
+    cursor: pointer;
+}
+
+.levelup-nav .levelup-sidebar-toggle:hover {
+    background: var(--lu-surface-soft);
+}
+
+.levelup-workspace {
+    display: grid;
+    grid-template-columns: 216px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    margin: 14px 15px 18px;
+    min-height: calc(100vh - 150px);
+}
+
+.levelup-workspace > .levelup-sidebar {
+    position: sticky;
+    top: 14px;
+    min-width: 0;
+    min-height: 180px;
+    padding: 13px;
+    background: var(--lu-surface);
+    border: 1px solid var(--lu-border);
+    border-radius: var(--lu-radius);
+    transition: width .2s ease, padding .2s ease;
+}
+
+.levelup-page-content {
+    min-width: 0;
+}
+
+.levelup-workspace .levelup-creator {
+    min-width: 0;
+}
+
+.levelup-sidebar-backdrop {
+    display: none;
+}
+
+body.levelup-sidebar-collapsed .levelup-workspace {
+    grid-template-columns: 66px minmax(0, 1fr);
+}
+
+body.levelup-sidebar-collapsed .levelup-workspace > .levelup-sidebar {
+    padding: 10px 7px;
+}
+
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-sidebar-heading {
+    justify-content: center;
+}
+
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-sidebar-heading h2,
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-sidebar-heading a,
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator-info,
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator > .levelup-live-badge,
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator > .levelup-vod-badge {
+    display: none;
+}
+
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator {
+    justify-content: center;
+    padding: 7px 3px;
+}
+
+body.levelup-sidebar-collapsed .levelup-workspace .levelup-avatar {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+}
+
+@media (max-width: 900px) and (min-width: 651px) {
+    .levelup-workspace {
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 12px;
+        margin-inline: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    .levelup-workspace,
+    body.levelup-sidebar-collapsed .levelup-workspace {
+        display: block;
+        margin: 10px 10px 14px;
+        min-height: 0;
+    }
+
+    .levelup-workspace > .levelup-sidebar {
+        position: fixed;
+        z-index: 1002;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: min(285px, 82vw);
+        min-height: 0;
+        overflow-y: auto;
+        border-radius: 0 13px 13px 0;
+        transform: translateX(-105%);
+        transition: transform .22s ease;
+    }
+
+    body.levelup-sidebar-open .levelup-workspace > .levelup-sidebar {
+        transform: translateX(0);
+    }
+
+    .levelup-sidebar-backdrop {
+        position: fixed;
+        z-index: 1001;
+        inset: 0;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        border: 0;
+        background: rgba(12, 18, 30, .48);
+        transition: opacity .22s ease, visibility .22s ease;
+    }
+
+    body.levelup-sidebar-open .levelup-sidebar-backdrop {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    body.levelup-sidebar-collapsed .levelup-workspace > .levelup-sidebar {
+        padding: 13px;
+    }
+
+    body.levelup-sidebar-collapsed .levelup-workspace .levelup-sidebar-heading h2,
+    body.levelup-sidebar-collapsed .levelup-workspace .levelup-sidebar-heading a,
+    body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator-info,
+    body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator > .levelup-live-badge,
+    body.levelup-sidebar-collapsed .levelup-workspace .levelup-creator > .levelup-vod-badge {
+        display: initial;
+    }
+}
+
+/* Live Streams: category filters inside the page content */
+.levelup-streams-page {
+    width: 100%;
+    min-width: 0;
+}
+
+.levelup-streams-page .levelup-content {
+    width: 100%;
+    min-width: 0;
+}
+
+.levelup-category-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 24px;
+    padding: 4px 0 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.levelup-category-filter {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 14px;
+    border: 1px solid var(--lu-border, #333);
+    border-radius: 999px;
+    color: var(--lu-text, #eee);
+    background: var(--lu-surface, #1b1b1b);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1;
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.levelup-category-filter:hover {
+    border-color: var(--lu-accent, #8b5cf6);
+    background: var(--lu-surface-hover, #262626);
+}
+
+.levelup-category-filter.active {
+    border-color: var(--lu-accent, #8b5cf6);
+    color: #fff;
+    background: var(--lu-accent, #8b5cf6);
+}
+
+.levelup-category-filter i {
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    .levelup-category-filters {
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .levelup-category-filter {
+        min-height: 36px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
